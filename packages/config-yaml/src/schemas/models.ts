@@ -13,6 +13,7 @@ export const embedOptionsSchema = z.object({
   maxChunkSize: z.number().min(1).optional(),
   maxBatchSize: z.number().min(1).optional(),
 });
+export type EmbedOptions = z.infer<typeof embedOptionsSchema>;
 
 export const requestOptionsSchema = z.object({
   timeout: z.number().optional(),
@@ -64,6 +65,7 @@ const baseModelFields = {
   requestOptions: requestOptionsSchema.optional(),
   promptTemplates: promptTemplatesSchema.optional(),
   embedOptions: embedOptionsSchema.optional(),
+  env: z.record(z.string(), z.string()).optional(),
 };
 
 export const modelSchema = z.union([
