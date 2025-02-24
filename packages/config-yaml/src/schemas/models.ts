@@ -9,6 +9,11 @@ export type ClientCertificateOptions = z.infer<
   typeof clientCertificateOptionsSchema
 >;
 
+export const embedOptionsSchema = z.object({
+  maxChunkSize: z.number().min(1).optional(),
+  maxBatchSize: z.number().min(1).optional(),
+});
+
 export const requestOptionsSchema = z.object({
   timeout: z.number().optional(),
   verifySsl: z.boolean().optional(),
@@ -58,6 +63,7 @@ const baseModelFields = {
   defaultCompletionOptions: completionOptionsSchema.optional(),
   requestOptions: requestOptionsSchema.optional(),
   promptTemplates: promptTemplatesSchema.optional(),
+  embedOptions: embedOptionsSchema.optional(),
 };
 
 export const modelSchema = z.union([
