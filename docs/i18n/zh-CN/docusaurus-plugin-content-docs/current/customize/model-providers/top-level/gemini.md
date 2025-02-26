@@ -9,15 +9,15 @@ slug: ../gemini
 
 ## 聊天模型
 
-我们推荐配置 **Gemini 1.5 Pro** 作为你的聊天模型。
+我们推荐配置 **Gemini 2.0 Flash** 作为你的聊天模型。
 
 ```json title="config.json"
 {
   "models": [
     {
-      "title": "Gemini 1.5 Pro",
+      "title": "Gemini 2.0 Flash",
       "provider": "gemini",
-      "model": "gemini-1.5-pro-latest",
+      "model": "gemini-2.0-flash",
       "apiKey": "[API_KEY]"
     }
   ]
