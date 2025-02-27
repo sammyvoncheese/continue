@@ -63,13 +63,6 @@ export const providers: Partial<Record<string, ProviderInfo>> = {
       models.gpt4omini,
       models.gpt4turbo,
       models.gpt35turbo,
-      {
-        ...models.AUTODETECT,
-        params: {
-          ...models.AUTODETECT.params,
-          title: "OpenAI",
-        },
-      },
     ],
     collectInputFor: [
       {
@@ -280,16 +273,7 @@ Select the \`GPT-4o\` model below to complete your provider configuration, but n
       'To get started with Ollama, follow these steps:\n1. Download from [ollama.ai](https://ollama.ai/download) and open the application\n2. Open a terminal and run `ollama run <MODEL_NAME>`. Example model names are `codellama:7b-instruct` or `llama2:7b-text`. You can find the full list [here](https://ollama.ai/library).\n3. Make sure that the model name used in step 2 is the same as the one in config.json (e.g. `model="codellama:7b-instruct"`)\n4. Once the model has finished downloading, you can start asking questions through Continue.',
     icon: "ollama.png",
     tags: [ModelProviderTags.Local, ModelProviderTags.OpenSource],
-    packages: [
-      {
-        ...models.AUTODETECT,
-        params: {
-          ...models.AUTODETECT.params,
-          title: "Ollama",
-        },
-      },
-      ...openSourceModels,
-    ],
+    packages: [...openSourceModels],
     collectInputFor: [
       ...completionParamsInputsConfigs,
       { ...apiBaseInput, defaultValue: "http://localhost:11434" },
@@ -342,13 +326,6 @@ Select the \`GPT-4o\` model below to complete your provider configuration, but n
       models.llama3170bChat,
       models.llama318bChat,
       { ...models.mixtralTrial, title: "Mixtral" },
-      {
-        ...models.AUTODETECT,
-        params: {
-          ...models.AUTODETECT.params,
-          title: "Groq",
-        },
-      },
     ],
     apiKeyUrl: "https://console.groq.com/keys",
   },
@@ -529,16 +506,7 @@ Select the \`GPT-4o\` model below to complete your provider configuration, but n
     params: {
       apiBase: "http://localhost:1234/v1/",
     },
-    packages: [
-      {
-        ...models.AUTODETECT,
-        params: {
-          ...models.AUTODETECT.params,
-          title: "LM Studio",
-        },
-      },
-      ...openSourceModels,
-    ],
+    packages: [...openSourceModels],
     collectInputFor: [...completionParamsInputsConfigs],
     downloadUrl: "https://lmstudio.ai/",
   },
@@ -631,16 +599,7 @@ After it's up and running, you can start using Continue.`,
     ],
     icon: "openai.png",
     tags: [ModelProviderTags.Local, ModelProviderTags.OpenSource],
-    packages: [
-      {
-        ...models.AUTODETECT,
-        params: {
-          ...models.AUTODETECT.params,
-          title: "OpenAI",
-        },
-      },
-      ...openSourceModels,
-    ],
+    packages: [...openSourceModels],
   },
   watsonx: {
     title: "IBM watsonx",
@@ -724,13 +683,6 @@ To get started, [register](https://dataplatform.cloud.ibm.com/registration/stepo
       { ...models.claude35Haiku, title: "Claude 3.5 Haiku (trial)" },
       models.mixtralTrial,
       { ...models.gemini15Pro, title: "Gemini 1.5 Pro (trial)" },
-      {
-        ...models.AUTODETECT,
-        params: {
-          ...models.AUTODETECT.params,
-          title: "Free Trial",
-        },
-      },
     ],
     collectInputFor: [...completionParamsInputsConfigs],
   },
@@ -778,17 +730,7 @@ To get started, [register](https://dataplatform.cloud.ibm.com/registration/stepo
         required: true,
       },
     ],
-    packages: [
-      models.llama3170bChat,
-      models.llama318bChat,
-      {
-        ...models.AUTODETECT,
-        params: {
-          ...models.AUTODETECT.params,
-          title: "Cerebras",
-        },
-      },
-    ],
+    packages: [models.llama3170bChat, models.llama318bChat],
     apiKeyUrl: "https://cloud.cerebras.ai/",
   },
   vertexai: {

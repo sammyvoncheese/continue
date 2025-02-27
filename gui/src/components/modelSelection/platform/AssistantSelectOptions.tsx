@@ -88,7 +88,15 @@ export function AssistantSelectOptions({
       <div className="mt-auto w-full">
         <OptionDiv
           key={"new-assistant"}
-          onClick={session ? onNewAssistant : () => login(false)}
+          onClick={
+            session
+              ? onNewAssistant
+              : () =>
+                  ideMessenger.request("controlPlane/openUrl", {
+                    path: "/explore/assistants",
+                    orgSlug: undefined,
+                  })
+          }
         >
           <div
             className="flex items-center py-0.5"
@@ -110,7 +118,13 @@ export function AssistantSelectOptions({
           </span>
           <div
             className="flex items-center gap-1"
-            onClick={() => navigate(ROUTES.CONFIG)}
+            onClick={() => {
+              if (session) {
+                navigate(ROUTES.CONFIG);
+              } else {
+                login(false);
+              }
+            }}
           >
             {selectedOrganization?.iconUrl ? (
               <img
@@ -120,8 +134,9 @@ export function AssistantSelectOptions({
             ) : (
               <BuildingOfficeIcon className="h-4 w-4" />
             )}
+
             <span className="hover:cursor-pointer hover:underline">
-              {selectedOrganization?.name || "Personal"}
+              {!!session ? selectedOrganization?.name || "Personal" : "Sign in"}
             </span>
           </div>
         </div>
