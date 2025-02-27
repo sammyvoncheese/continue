@@ -1510,14 +1510,4 @@ export const models: { [key: string]: ModelPackage } = {
     providerOptions: ["siliconflow"],
     isOpenSource: true,
   },
-  AUTODETECT: {
-    title: "Autodetect",
-    description:
-      "Automatically populate the model list by calling the /models endpoint of the server",
-    params: {
-      model: "AUTODETECT",
-    } as any,
-    providerOptions: [],
-    isOpenSource: false,
-  },
 };
